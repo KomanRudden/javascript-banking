@@ -11,10 +11,12 @@ const { v4: uuidv4 } = require('uuid');
  * It is commonly used to create APIs and handle HTTP requests and responses.
  */
 const app = express();
+const cors = require('cors');
 const bankzClient = new MockClient(); // Global client for simplicity
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.use(cors());
 
 app.post('/api/customers', (req, res) => {
     const { name, email } = req.body;
